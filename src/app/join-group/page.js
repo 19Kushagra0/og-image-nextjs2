@@ -18,7 +18,7 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-export default async function page() {
+export default async function page({ searchParams }) {
   const params = await searchParams;
   const groupName = params.groupName || "Your Group";
   return (
