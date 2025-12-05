@@ -5,6 +5,9 @@ export async function generateMetadata({ searchParams }) {
   const params = await searchParams;
   const groupName = params.groupName || "Your Group";
 
+  const title = `${groupName} - Numora`;
+  const description = "Add, track, and split expenses with your friends";
+
   return {
     title,
     description,
