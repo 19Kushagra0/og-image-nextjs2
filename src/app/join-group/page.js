@@ -6,7 +6,13 @@ export async function generateMetadata({ searchParams }) {
   const groupName = params.groupName || "Your Group";
 
   return {
+    title,
+    description,
     openGraph: {
+      title,
+      description,
+      url: "https://www.getnumora.com/join-group",
+      type: "website",
       images: [
         {
           // url: `/api/og/join-group?groupName=${groupName}`,
