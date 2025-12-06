@@ -5,7 +5,7 @@ export const runtime = "edge";
 
 // Load Inter font once per cold start
 const interFont = fetch(
-  new URL("./font/Inter_28pt-Medium.ttf", import.meta.url)
+  new URL("./font/Inter_28pt-SemiBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export async function GET(req) {
@@ -19,7 +19,7 @@ export async function GET(req) {
       {
         name: "Inter",
         data: await interFont,
-        weight: 500, // Medium
+        weight: 600, // SemiBold
         style: "normal",
       },
     ],
