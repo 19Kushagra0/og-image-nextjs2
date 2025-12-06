@@ -1,20 +1,27 @@
 import { ImageResponse } from "next/og";
 import DynamicImageOg from "./JoinGroup-image";
 
-export const runtime = "edge"; // OG images must run on edge
+export const runtime = "edge";
+
+// Load Inter font once per cold start
+const interFont = fetch(
+  new URL("./font/Inter_28pt-Medium.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
-
-  // Read groupName from URL
   const groupName = searchParams.get("groupName") || "Your Group";
-  // Convert the URL string into a URL object
-  // const url = new URL(req.url);
-  // const searchParams = url.searchParams;
 
-  // Return OG Image
   return new ImageResponse(<DynamicImageOg groupName={groupName} />, {
     width: 1200,
     height: 630,
+    fonts: [
+      {
+        name: "Inter",
+        data: await interFont,
+        weight: 500, // Medium
+        style: "normal",
+      },
+    ],
   });
 }
